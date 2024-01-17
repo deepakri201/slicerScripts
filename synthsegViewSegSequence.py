@@ -3,6 +3,7 @@
 # To run: 
 # cd to C:\Users\deepa\AppData\Local\slicer.org\Slicer 5.6.1
 # Slicer.exe --python-script "D://deepa//Slicer//SynthSegViewSegAndGt//synthsegViewSegSequence.py" # --no-splash  --no-main-window
+# Slicer.exe --python-script "C://Users//deepa//git//slicerScripts//synthsegViewSegSequence.py"
 # 
 # Click to load next patient. 
 # Use sequenceBrowser to play through the SEG for each validation epoch. 
@@ -20,7 +21,8 @@ form_color_table = 0
 # color_table_filename = 'D:/deepa/Slicer/SynthSegViewSegAndGt/color_table_totalSegmentator.ctbl'
 
 # https://sashamaps.net/docs/resources/20-colors/ 
-color_table_filename = 'D:/deepa/Slicer/SynthSegViewSegAndGt/color_table_Slicer.ctbl'
+# color_table_filename = 'D:/deepa/Slicer/SynthSegViewSegAndGt/color_table_Slicer.ctbl'
+color_table_filename = 'C:/Users/deepa/git/slicerScripts/color_table_Slicer.ctbl'
 
 ##################
 ### Imports ### 
@@ -49,10 +51,20 @@ except ModuleNotFoundError:
 ### Set up ### 
 ##################
 
-### AMOS validation ###
+### AMOS validation MR ###
 BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_images_train_synthseg_ext"
 BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
-BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
+# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
+BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_labels_train_synthseg_ext"
+use_original_name_labels = 1 
+use_original_name_results = 1 
+labels_exist = 1
+
+### AMOS validation CT### 
+BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_images_train_synthseg_ext"
+BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_pred_train_exp2"
+# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_pred_train_exp2"
+BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_labels_train_synthseg_ext"
 use_original_name_labels = 1 
 use_original_name_results = 1 
 labels_exist = 1
@@ -146,7 +158,29 @@ if (form_color_table):
 
 
 def load():
+  
+    ###################################
+    ### Delete nodes from the scene ###
+    ###################################
+    
+    # Delete all segmentation nodes in scene
+    existingSegNodes = slicer.util.getNodesByClass("vtkMRMLSegmentationNode")
+    for node in existingSegNodes:
+      slicer.mrmlScene.RemoveNode(node)
+    # Delete volume nodes from scene 
+    existingVolumeNodes = slicer.util.getNodesByClass("vtkMRMLScalarVolumeNode")
+    for node in existingVolumeNodes:
+      slicer.mrmlScene.RemoveNode(node)
+    # Delete sequences node from scene 
+    existingSeqNodes = slicer.util.getNodesByClass("vtkMRMLSequenceNode")
+    for node in existingSeqNodes:
+      slicer.mrmlScene.RemoveNode(node)
+    
 
+    #################
+    ### Set nodes ###
+    #################
+    
     colorNode = slicer.util.loadColorTable(color_table_filename)
 
     global resultIndex, labelNode, volumeNode, resultNode, resultPaths
@@ -170,7 +204,8 @@ def load():
       else: 
           labelFileName = os.path.join(BASE_LABELS,patientID.split('.')[0] + '_mask.nii.gz')
       print('labelFileName: ' + str(labelFileName))
-      # labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
+      print(os.path.exists(labelFileName))
+    # labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
 
     volumeFileName = os.path.join(BASE_IMAGES, patientID)
     print('volumeFileName: ' + str(volumeFileName))
@@ -189,7 +224,7 @@ def load():
     ### Sequence node ### 
     sequence_node = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSequenceNode")
     nifti_files = [os.path.join(f, patientID) for f in subDirs]
-    print('nifti_files: ' + str(nifti_files))
+    # print('nifti_files: ' + str(nifti_files))
           
     for index, nifti_file in enumerate(nifti_files):
       # file_path = os.path.join(directory_path, nifti_file)
@@ -230,6 +265,13 @@ def load():
     existingSegNodes = slicer.util.getNodesByClass("vtkMRMLSegmentationNode")
     for node in existingSegNodes:
       slicer.mrmlScene.RemoveNode(node)
+      
+    # add in labelNode for outline (ground truth)
+    labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
+    if (labels_exist):
+      labelNode.GetDisplayNode().SetAllSegmentsOpacity2DFill(0.0)
+      labelNode.GetDisplayNode().SetAllSegmentsOpacity2DOutline(1.0)
+      labelNode.GetDisplayNode().SetSliceIntersectionThickness(3)
 
     # Set frame rate to 1 frame per second 
     # sequence_node.SetIndexingRate(1.0)
