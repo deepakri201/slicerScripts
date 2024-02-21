@@ -11,6 +11,22 @@
 # Deepa Krishnaswamy 
 # Brigham and Women's Hospital 
 # January 2024 
+# 
+# Extra code for renaming files to have _synthseg extension for now
+    # import os
+    # import shutil 
+    # input_directory = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\ct_images_train"
+    # output_directory = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\ct_images_train_synthseg_ext"
+    # files = [f for f in os.listdir(input_directory) if f.endswith(".nii.gz")]
+    # num_files = len(files)
+    # num_files
+    # files
+    # for n in range(0,num_files):
+    #   input_filename = os.path.join(input_directory, files[n])
+    #   output_filename = os.path.join(output_directory, files[n].split('.')[0] + '_synthseg.nii.gz')
+    #   print(input_filename)
+    #   print(output_filename)
+    #   shutil.copyfile(input_filename, output_filename)
 ##########################################################################################################
 
 ##################
@@ -52,23 +68,48 @@ except ModuleNotFoundError:
 ##################
 
 ### AMOS validation MR ###
-BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_images_train_synthseg_ext"
-BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
-# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
-BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_labels_train_synthseg_ext"
+
+# BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_images_train_synthseg_ext"
+# BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
+# # BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_pred_train_exp2"
+# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\mr_labels_train_synthseg_ext"
+# use_original_name_labels = 1 
+# use_original_name_results = 1 
+# labels_exist = 1
+
+
+### AMOS validation CT ### 
+
+# BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_images_train_synthseg_ext"
+# BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_pred_train_exp2"
+# # BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_pred_train_exp2"
+# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_labels_train_synthseg_ext"
+# use_original_name_labels = 1 
+# use_original_name_results = 1 
+# labels_exist = 1
+
+##### CHAOS MR validation #### 
+
+# BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\mr_images_train_synthseg_ext"
+# BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\mr_pred_train_exp2"
+# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\\mr_labels_train_synthseg_ext"
+# use_original_name_labels = 1 
+# use_original_name_results = 1 
+# labels_exist = 1
+
+### CHAOS CT validation ###  
+
+BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\ct_images_train_synthseg_ext"
+BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\ct_pred_train_exp2"
+BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\\ct_labels_train_synthseg_ext"
 use_original_name_labels = 1 
 use_original_name_results = 1 
 labels_exist = 1
 
-### AMOS validation CT### 
-BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_images_train_synthseg_ext"
-BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_pred_train_exp2"
-# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_pred_train_exp2"
-BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\amos\\processed\\ct_labels_train_synthseg_ext"
-use_original_name_labels = 1 
-use_original_name_results = 1 
-labels_exist = 1
-
+assert os.path.exists(BASE_RESULTS)
+assert os.path.exists(BASE_IMAGES)
+assert os.path.exists(BASE_LABELS)
+ 
 ##################
 ### Initialize ### 
 ##################
