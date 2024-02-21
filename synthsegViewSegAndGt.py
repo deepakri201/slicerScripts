@@ -3,6 +3,8 @@
 # To run: 
 # cd to C:\Users\deepa\AppData\Local\slicer.org\Slicer 5.6.1
 # Slicer.exe --python-script "D://deepa//Slicer//SynthSegViewSegAndGt//synthsegViewSegAndGt.py" # --no-splash  --no-main-window
+
+# Slicer.exe --python-script "C://Users//deepa//git//slicerScripts//synthsegViewSegAndGt.py"
 # 
 # First iteration - display gt and pred when both have same labels 
 # Second iteration - display gt and pred when both have different labels, match color according to id 
@@ -84,22 +86,22 @@ except ModuleNotFoundError:
 # use_original_name_results = 1 
 # labels_exist = 1 
 
-### TCGA-LIHC AIMI BANF ### 
-BASE_IMAGES = "D:\\deepa\\SynthSeg\\testing\\tcga_lihc_aimi_banf\\nii_3d"
-BASE_RESULTS = "D:\\deepa\\SynthSeg\\testing\\tcga_lihc_aimi_banf\\pred_3d"
-use_original_name_labels = 1 
-use_original_name_results = 0 
-labels_exist = 0 
+# ### TCGA-LIHC AIMI BANF ### 
+# BASE_IMAGES = "D:\\deepa\\SynthSeg\\testing\\tcga_lihc_aimi_banf\\nii_3d"
+# BASE_RESULTS = "D:\\deepa\\SynthSeg\\testing\\tcga_lihc_aimi_banf\\pred_3d"
+# use_original_name_labels = 1 
+# use_original_name_results = 0 
+# labels_exist = 0 
 
 
 ### CHAOS validation ### 
-# BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\images_with_synthseg_ext"
-# # BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\labels"
-# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\pred_resampled\\dice_001"
-# BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\pred_resampled\\dice_100"
-# use_original_name_labels = 1
-# use_original_name_results = 1 
-# labels_exist = 1 
+BASE_IMAGES = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\images_with_synthseg_ext"
+# BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\labels"
+BASE_LABELS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\pred_resampled\\dice_001"
+BASE_RESULTS = "D:\\deepa\\SynthSeg\\validation\\CHAOS\\pred_resampled\\dice_100"
+use_original_name_labels = 1
+use_original_name_results = 1 
+labels_exist = 1 
 
 resultIndex = 0
 labelNode = None
