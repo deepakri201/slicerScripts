@@ -10,12 +10,34 @@
 # The ground truth is overlaid in each axial view as outlines. 
 # 
 # To run on Mac: 
-# /Applications/Slicer\ 4.app/Contents/MacOS/Slicer --python-script /Users/dk422/git/slicerScripts/abdomen_exp4/slicer_algorithm_comparison_compare_volumes.py
+# /Applications/Slicer\ 4.app/Contents/MacOS/Slicer --python-script /Users/dk422/git/slicerScripts/abdomen_exp4/slicer_algorithm_comparison_compare_volumes_single.py
 # 
 # Deepa Krishnaswamy 
 # Brigham and Women's Hospital 
 # July 2024 
 ##########################################################################################################
+
+import os 
+
+##############
+### Inputs ### 
+##############
+
+### MR AMOS TRAIN 
+
+patientID = "amos_0507"
+
+BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
+BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
+BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
+BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
+BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
+BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
+
+resultPath_SynthSeg = os.path.join(BASE_RESULTS_SynthSeg, patientID + '_synthseg.nii.gz')
+resultPath_TotalSegmentatorMRI = os.path.join(BASE_RESULTS_TotalSegmentatorMRI, patientID + '.nii.gz')
+resultPath_MRSegmentator = os.path.join(BASE_RESULTS_MRSegmentator, patientID + '_seg.nii.gz')
+resultPath_MRISegmentatorAbdomen = os.path.join(BASE_RESULTS_MRISegmentatorAbdomen, patientID + '.nii.gz')
 
 ##################
 ### Parameters ### 
@@ -29,23 +51,10 @@ color_table_filename = '/Users/dk422/git/slicerScripts/color_table_NLST_TotalSeg
 
 ###### Gt and pred have different labels, color the labels according to the same id #####
 
-### MR AMOS TRAIN 
-BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
-BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
-BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
-BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
-BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
-BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
-
 resultIndex = 0
 labelNode = None
 volumeNode = None 
 segNodes = []
-
-resultPaths_SynthSeg = sorted(glob.glob(f"{BASE_RESULTS_SynthSeg}/*.nii.gz")) # amos_0507_synthseg.nii.gz
-resultPaths_TotalSegmentatorMRI = sorted(glob.glob(f"{BASE_RESULTS_TotalSegmentatorMRI}/*.nii.gz")) # amos_0507.nii.gz
-resultPaths_MRSegmentator = sorted(glob.glob(f"{BASE_RESULTS_MRSegmentator}/*.nii.gz")) # amos_0507_seg.nii.gz
-resultPaths_MRISegmentatorAbdomen = sorted(glob.glob(f"{BASE_RESULTS_MRISegmentatorAbdomen}/*.nii.gz")) # amos_0507.nii.gz
 
 print('BASE_IMAGES: ' + str(BASE_IMAGES))
 print('BASE_LABELS: ' + str(BASE_LABELS))
@@ -53,6 +62,13 @@ print('BASE_RESULTS_SynthSeg: ' + str(BASE_RESULTS_SynthSeg))
 print('BASE_RESULTS_TotalSegmentatorMRI: ' + str(BASE_RESULTS_TotalSegmentatorMRI))
 print('BASE_RESULTS_MRSegmentator: ' + str(BASE_RESULTS_MRSegmentator))
 print('BASE_RESULTS_MRISegmentatorAbdomen: ' + str(BASE_RESULTS_MRISegmentatorAbdomen))
+
+print('patientID: ' + str(patientID))
+
+print('resultPath_SynthSeg: ' + str(resultPath_SynthSeg))
+print('resultPath_TotalSegmentatorMRI: ' + str(resultPath_TotalSegmentatorMRI))
+print('resultPath_MRSegmentator: ' + str(resultPath_MRSegmentator))
+print('resultPath_MRISegmentatorAbdomen: ' + str(resultPath_MRISegmentatorAbdomen))
 
 ##################
 ### Imports ### 
@@ -254,27 +270,13 @@ def load():
 
     colorNode = slicer.util.loadColorTable(color_table_filename)
 
-    global resultIndex, labelNode, volumeNode, segNodes
+    global labelNode, volumeNode, segNodes
     for node in [labelNode, volumeNode]:
         if node:
             slicer.mrmlScene.RemoveNode(node)
     for node in segNodes: 
         if node: 
             slicer.mrmlScene.RemoveNode(node)
-
-    resultPath_SynthSeg = resultPaths_SynthSeg[resultIndex]
-    resultPath_TotalSegmentatorMRI = resultPaths_TotalSegmentatorMRI[resultIndex]
-    resultPath_MRSegmentator = resultPaths_MRSegmentator[resultIndex]
-    resultPath_MRISegmentatorAbdomen = resultPaths_MRISegmentatorAbdomen[resultIndex]
-    print('resultPath_SynthSeg: ' + str(resultPath_SynthSeg))
-    print('resultPath_TotalSegmentatorMRI: ' + str(resultPath_TotalSegmentatorMRI))
-    print('resultPath_MRSegmentator: ' + str(resultPath_MRSegmentator))
-    print('resultPath_MRISegmentatorAbdomen: ' + str(resultPath_MRISegmentatorAbdomen))
-    resultIndex += 1
-
-    patientID = os.path.basename(resultPath_TotalSegmentatorMRI) # because this one is just amos_0000.nii.gz with no suffix. 
-    patientID = os.path.splitext(os.path.splitext(patientID)[0])[0]
-    print('patientID: ' + str(patientID))
 
     ### Load the background volume for all 4 slice views ### 
     volumeFileName = os.path.join(BASE_IMAGES, patientID + ".nii.gz")
@@ -335,9 +337,9 @@ def load():
 
 
 
-button = qt.QPushButton("Next")
-button.connect("clicked()", load)
-button.show()
+# button = qt.QPushButton("Next")
+# button.connect("clicked()", load)
+# button.show()
 
 load()
 
