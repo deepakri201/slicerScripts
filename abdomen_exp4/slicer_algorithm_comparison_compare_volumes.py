@@ -21,7 +21,7 @@
 ### Parameters ### 
 ##################
 
-color_table_filename = '/Users/dk422/git/slicerScripts/color_table_Slicer.ctbl'
+color_table_filename = '/Users/dk422/git/slicerScripts/color_table_NLST_TotalSegmentator.ctbl'
 
 ##################
 ### Imports ### 
