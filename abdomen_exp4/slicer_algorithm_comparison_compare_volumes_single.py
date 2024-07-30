@@ -24,15 +24,31 @@ import os
 ##############
 
 ### MR AMOS TRAIN 
-
-patientID = "amos_0507"
-
+patientID = "amos_0510"
 BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
 BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
 BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
 BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
 BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
 BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
+
+# ### CT AMOS TRAIN - SMALL
+# patientID = "amos_0004"
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_images_train"
+# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_labels_train"
+# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_ct_train_small/prediction_results_resampled/dice_100"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_ct_train/prediction_results_formatted"
+# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_ct_train/prediction_results_formatted"
+# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_ct_train_small/prediction_results_formatted"
+
+# ### CHAOS MR 
+# patientID = "mr_1_T1DUAL_INPHASE"
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/chaos/ready_synthseg_total_validation/mr/images_fixed_int16"
+# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/chaos/ready_synthseg_total_validation/mr/labels"
+# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/chaos_mr/prediction_results_resampled/dice_100"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/chaos_mr/prediction_results_formatted"
+# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/chaos_mr/prediction_results_formatted"
+# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/chaos_mr/prediction_results_formatted"
 
 resultPath_SynthSeg = os.path.join(BASE_RESULTS_SynthSeg, patientID + '_synthseg.nii.gz')
 resultPath_TotalSegmentatorMRI = os.path.join(BASE_RESULTS_TotalSegmentatorMRI, patientID + '.nii.gz')
