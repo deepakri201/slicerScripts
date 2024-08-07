@@ -32,13 +32,21 @@ color_table_filename = '/Users/dk422/git/slicerScripts/color_table_NLST_TotalSeg
 
 ###### Gt and pred have different labels, color the labels according to the same id #####
 
-### MR AMOS TRAIN 
-BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
-BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
-BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
-BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
-BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
-BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
+# ### MR AMOS TRAIN 
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
+# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
+# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
+# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
+# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
+
+# ### IDC samples 
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/idc_external_samples/cptac_ucec/images"
+# BASE_LABELS = ""
+# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/idc_cptac_ucec/prediction_results_resampled/dice_100"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/idc_cptac_ucec/prediction_results_formatted"
+# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/idc_cptac_ucec/prediction_results_formatted"
+# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/idc_cptac_ucec/prediction_results_formatted"
 
 # ### MR AMOS VAL - TotalSegmentatorMRI results missing, run later 
 # BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_val"
@@ -48,13 +56,13 @@ BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_ex
 # BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_val/prediction_results_formatted"
 # BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_valtrain/prediction_results_formatted"
 
-# ### CT AMOS TRAIN - SMALL 
-# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_images_train"
-# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_labels_train"
-# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_ct_train_small/prediction_results_resampled/dice_100"
-# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_ct_train/prediction_results_formatted"
-# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_ct_train/prediction_results_formatted"
-# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_ct_train_small/prediction_results_formatted"
+### CT AMOS TRAIN - SMALL 
+BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_images_train"
+BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_labels_train"
+BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_ct_train_small/prediction_results_resampled/dice_100"
+BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_ct_train/prediction_results_formatted"
+BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_ct_train/prediction_results_formatted"
+BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_ct_train_small/prediction_results_formatted"
 
 # ### CHAOS MR 
 # BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/chaos/ready_synthseg_total_validation/mr/images_fixed_int16"
@@ -65,17 +73,59 @@ BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_ex
 # BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/chaos_mr/prediction_results_formatted"
 
 # ### TotalSegmentatorMRI - SMALL - skip for now, don't have data.
-# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
-# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_small/images"
+# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_small/labels"
 # BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/totalsegmri_small/prediction_results_resampled/dice_100"
-# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/totalsegmri_small/prediction_results_formatted"
+# # BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/totalsegmri_small/prediction_results_formatted"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/totalsegmri_small/totalsegmri_prediction_results_formatted"
 # BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/totalsegmri_small/prediction_results_formatted"
 # BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/totalsegmri_small/prediction_results_formatted"
+
 
 resultPaths_SynthSeg = sorted(glob.glob(f"{BASE_RESULTS_SynthSeg}/*.nii.gz")) # amos_0507_synthseg.nii.gz
 resultPaths_TotalSegmentatorMRI = sorted(glob.glob(f"{BASE_RESULTS_TotalSegmentatorMRI}/*.nii.gz")) # amos_0507.nii.gz
 resultPaths_MRSegmentator = sorted(glob.glob(f"{BASE_RESULTS_MRSegmentator}/*.nii.gz")) # amos_0507_seg.nii.gz
 resultPaths_MRISegmentatorAbdomen = sorted(glob.glob(f"{BASE_RESULTS_MRISegmentatorAbdomen}/*.nii.gz")) # amos_0507.nii.gz
+
+print('number of patients for SynthSeg: ' + str(len(resultPaths_SynthSeg)))
+print("number of patients for TotalSegmentatorMRI: " + str(len(resultPaths_TotalSegmentatorMRI)))
+print('number of patients for MRSegmentator: ' + str(len(resultPaths_MRSegmentator)))
+print('number of patients for MRISegmentatorAbdomen: ' + str(len(resultPaths_MRISegmentatorAbdomen)))
+
+# Get the list of possible patients 
+patientID_list = sorted(os.listdir(BASE_IMAGES)) 
+patientID_list = [os.path.basename(f) for f in patientID_list] 
+patientID_list = [os.path.splitext(os.path.splitext(f)[0])[0] for f in patientID_list] 
+num_patientID = len(patientID_list)
+print('num_patientID: ' + str(num_patientID))
+print('patientID_list: ' + str(patientID_list))
+
+# Only keep the ones where all 4 of the patient exists 
+
+resultPaths_SynthSeg = []
+resultPaths_TotalSegmentatorMRI = [] 
+resultPaths_MRSegmentator = [] 
+resultPaths_MRISegmentatorAbdomen = [] 
+
+patientID_list_keep = patientID_list.copy()
+for n in range(0,num_patientID):
+    patientID = patientID_list[n] 
+    resultPath_SynthSeg = os.path.join(BASE_RESULTS_SynthSeg, patientID + '_synthseg.nii.gz')
+    resultPath_TotalSegmentatorMRI = os.path.join(BASE_RESULTS_TotalSegmentatorMRI, patientID + '.nii.gz')
+    resultPath_MRSegmentator = os.path.join(BASE_RESULTS_MRSegmentator, patientID + '_seg.nii.gz')
+    resultPath_MRISegmentatorAbdomen = os.path.join(BASE_RESULTS_MRISegmentatorAbdomen, patientID + '.nii.gz')
+    if (not os.path.exists(resultPath_SynthSeg)) \
+        or (not os.path.exists(resultPath_TotalSegmentatorMRI)) \
+        or (not os.path.exists(resultPath_MRSegmentator)) \
+        or (not os.path.exists(resultPath_MRISegmentatorAbdomen)): 
+        patientID_list_keep.remove(patientID)
+    else:
+        resultPaths_SynthSeg.append(resultPath_SynthSeg)
+        resultPaths_TotalSegmentatorMRI.append(resultPath_TotalSegmentatorMRI)
+        resultPaths_MRSegmentator.append(resultPath_MRSegmentator)
+        resultPaths_MRISegmentatorAbdomen.append(resultPath_MRISegmentatorAbdomen)
+
+print('new num patients: ' + str(len(patientID_list_keep)))
 
 print('BASE_IMAGES: ' + str(BASE_IMAGES))
 print('BASE_LABELS: ' + str(BASE_LABELS))
@@ -290,7 +340,11 @@ def load():
     colorNode = slicer.util.loadColorTable(color_table_filename)
 
     global resultIndex, labelNode, volumeNode, segNodes
-    for node in [labelNode, volumeNode]:
+    if (BASE_LABELS):
+        for node in [labelNode]: 
+            if node: 
+                slicer.mrmlScene.RemoveNode(node) 
+    for node in [volumeNode]:
         if node:
             slicer.mrmlScene.RemoveNode(node)
     for node in segNodes: 
@@ -305,6 +359,7 @@ def load():
     print('resultPath_TotalSegmentatorMRI: ' + str(resultPath_TotalSegmentatorMRI))
     print('resultPath_MRSegmentator: ' + str(resultPath_MRSegmentator))
     print('resultPath_MRISegmentatorAbdomen: ' + str(resultPath_MRISegmentatorAbdomen))
+
     resultIndex += 1
 
     patientID = os.path.basename(resultPath_TotalSegmentatorMRI) # because this one is just amos_0000.nii.gz with no suffix. 
@@ -331,23 +386,29 @@ def load():
 
     ### Load the ground truth label - display as thick outline in each of the views ### 
     # Load
-    labelFileName = os.path.join(BASE_LABELS, patientID + ".nii.gz")
-    print('labelFileName: ' + str(labelFileName))
-    labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
+    if (BASE_LABELS):
+        labelFileName = os.path.join(BASE_LABELS, patientID + ".nii.gz")
+        print('labelFileName: ' + str(labelFileName))
+        labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
 
     # cvLogic = CompareVolumes.CompareVolumesLogic()
     cvLogic = CompareVolumesLogicDK()
     # cvLogic.viewerPerVolume(volumeNodes, background=volumeNodes[0], label=labelNode,
     #                         layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
     #                         orientation='Axial')
-    cvLogic.viewerPerVolume(volumeNodes=volumeNodes, background=volumeNodes[0], segNodes=segNodes, label=labelNode,
-                            layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
-                            orientation='Axial')
-
-    # Display labelmap node 
-    labelNode.GetDisplayNode().SetAllSegmentsOpacity2DFill(0.0)
-    labelNode.GetDisplayNode().SetAllSegmentsOpacity2DOutline(1.0)
-    labelNode.GetDisplayNode().SetSliceIntersectionThickness(3)
+    if (BASE_LABELS): 
+        cvLogic.viewerPerVolume(volumeNodes=volumeNodes, background=volumeNodes[0], segNodes=segNodes, label=labelNode,
+                                layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
+                                orientation='Axial')
+        # Display labelmap node 
+        labelNode.GetDisplayNode().SetAllSegmentsOpacity2DFill(0.0)
+        labelNode.GetDisplayNode().SetAllSegmentsOpacity2DOutline(1.0)
+        labelNode.GetDisplayNode().SetSliceIntersectionThickness(3)
+    
+    else: 
+        cvLogic.viewerPerVolume(volumeNodes=volumeNodes, background=volumeNodes[0], segNodes=segNodes,
+                        layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
+                        orientation='Axial')
 
     # Now link all the slice views 
     # https://slicer.readthedocs.io/en/latest/developer_guide/script_repository.html#set-all-slice-views-linked-by-default 

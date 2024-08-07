@@ -24,7 +24,7 @@ import os
 ##############
 
 ### MR AMOS TRAIN 
-patientID = "amos_0510"
+patientID = "amos_0557" # "amos_0580" # "amos_0583" # "amos_0557" # "amos_0507" # "amos_0508" # "amos_0518" # "amos_0600" # "amos_0541" # "amos_0580" # "amos_0596"
 BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
 BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
 BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
