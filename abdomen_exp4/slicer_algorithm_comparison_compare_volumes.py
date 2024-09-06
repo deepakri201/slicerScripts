@@ -40,13 +40,13 @@ color_table_filename = '/Users/dk422/git/slicerScripts/color_table_NLST_TotalSeg
 # BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
 # BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
 
-# ### IDC samples 
-# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/idc_external_samples/cptac_ucec/images"
-# BASE_LABELS = ""
-# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/idc_cptac_ucec/prediction_results_resampled/dice_100"
-# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/idc_cptac_ucec/prediction_results_formatted"
-# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/idc_cptac_ucec/prediction_results_formatted"
-# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/idc_cptac_ucec/prediction_results_formatted"
+### IDC samples 
+BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/idc_external_samples/cptac_ucec/images"
+BASE_LABELS = ""
+BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/idc_cptac_ucec/prediction_results_resampled/dice_100"
+BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/idc_cptac_ucec/prediction_results_formatted"
+BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/idc_cptac_ucec/prediction_results_formatted"
+BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/idc_cptac_ucec/prediction_results_formatted"
 
 # ### MR AMOS VAL - TotalSegmentatorMRI results missing, run later 
 # BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_val"
@@ -56,13 +56,13 @@ color_table_filename = '/Users/dk422/git/slicerScripts/color_table_NLST_TotalSeg
 # BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_val/prediction_results_formatted"
 # BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_valtrain/prediction_results_formatted"
 
-### CT AMOS TRAIN - SMALL 
-BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_images_train"
-BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_labels_train"
-BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_ct_train_small/prediction_results_resampled/dice_100"
-BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_ct_train/prediction_results_formatted"
-BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_ct_train/prediction_results_formatted"
-BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_ct_train_small/prediction_results_formatted"
+# ### CT AMOS TRAIN - SMALL 
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_images_train"
+# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/ct_labels_train"
+# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_ct_train_small/prediction_results_resampled/dice_100"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_ct_train/prediction_results_formatted"
+# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_ct_train/prediction_results_formatted"
+# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_ct_train_small/prediction_results_formatted"
 
 # ### CHAOS MR 
 # BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/chaos/ready_synthseg_total_validation/mr/images_fixed_int16"

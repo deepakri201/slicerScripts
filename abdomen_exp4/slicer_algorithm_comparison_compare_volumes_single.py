@@ -23,14 +23,14 @@ import os
 ### Inputs ### 
 ##############
 
-### MR AMOS TRAIN 
-patientID = "amos_0557" # "amos_0580" # "amos_0583" # "amos_0557" # "amos_0507" # "amos_0508" # "amos_0518" # "amos_0600" # "amos_0541" # "amos_0580" # "amos_0596"
-BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
-BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
-BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
-BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
-BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
-BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
+# ### MR AMOS TRAIN 
+# patientID = "amos_0557" # "amos_0580" # "amos_0583" # "amos_0557" # "amos_0507" # "amos_0508" # "amos_0518" # "amos_0600" # "amos_0541" # "amos_0580" # "amos_0596"
+# BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_images_train"
+# BASE_LABELS = "/Users/dk422/Documents/SynthSeg/validation/amos/processed/mr_labels_train"
+# BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/amos22_mr_train/prediction_results_resampled/dice_100"
+# BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/amos22_mr_train/prediction_results_formatted"
+# BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/amos22_mr_train/prediction_results_formatted"
+# BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/amos22_mr_train/prediction_results_formatted"
 
 # ### CT AMOS TRAIN - SMALL
 # patientID = "amos_0004"
@@ -49,6 +49,19 @@ BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_ex
 # BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/chaos_mr/prediction_results_formatted"
 # BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/chaos_mr/prediction_results_formatted"
 # BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/chaos_mr/prediction_results_formatted"
+
+### IDC CPTAC-UCEC
+# patientID = "C3L-02403-1.3.6.1.4.1.14519.5.2.1.6450.2626.885627531366106480284196791991"
+# patientID = "C3N-00860-1.3.6.1.4.1.14519.5.2.1.3320.3273.714694469302767764376208511501"
+# patientID = "C3L-01248-1.3.6.1.4.1.14519.5.2.1.6450.2626.954193569206059855586529512707"
+patientID = "C3N-00860-1.3.6.1.4.1.14519.5.2.1.3320.3273.714694469302767764376208511501"
+BASE_IMAGES = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/idc_external_samples/cptac_ucec/images"
+BASE_LABELS = ""
+BASE_RESULTS_SynthSeg = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/synthetic_results/idc_cptac_ucec/prediction_results_resampled/dice_100"
+BASE_RESULTS_TotalSegmentatorMRI = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/totalsegmri_results/idc_cptac_ucec/prediction_results_formatted"
+BASE_RESULTS_MRSegmentator = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrsegmentator_results/idc_cptac_ucec/prediction_results_formatted"
+BASE_RESULTS_MRISegmentatorAbdomen = "/Users/dk422/Documents/SynthSeg/abdomen_exp4B/mrisegmentatorabdomen_results/idc_cptac_ucec/prediction_results_formatted"
+
 
 resultPath_SynthSeg = os.path.join(BASE_RESULTS_SynthSeg, patientID + '_synthseg.nii.gz')
 resultPath_TotalSegmentatorMRI = os.path.join(BASE_RESULTS_TotalSegmentatorMRI, patientID + '.nii.gz')
@@ -314,23 +327,31 @@ def load():
 
     ### Load the ground truth label - display as thick outline in each of the views ### 
     # Load
-    labelFileName = os.path.join(BASE_LABELS, patientID + ".nii.gz")
-    print('labelFileName: ' + str(labelFileName))
-    labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
+    if (BASE_LABELS):
+        labelFileName = os.path.join(BASE_LABELS, patientID + ".nii.gz")
+        print('labelFileName: ' + str(labelFileName))
+        labelNode = slicer.util.loadSegmentation(labelFileName, {'colorNodeID': colorNode.GetID()})
 
     # cvLogic = CompareVolumes.CompareVolumesLogic()
     cvLogic = CompareVolumesLogicDK()
     # cvLogic.viewerPerVolume(volumeNodes, background=volumeNodes[0], label=labelNode,
     #                         layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
     #                         orientation='Axial')
-    cvLogic.viewerPerVolume(volumeNodes=volumeNodes, background=volumeNodes[0], segNodes=segNodes, label=labelNode,
-                            layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
-                            orientation='Axial')
+
+    if (BASE_LABELS):
+        cvLogic.viewerPerVolume(volumeNodes=volumeNodes, background=volumeNodes[0], segNodes=segNodes, label=labelNode,
+                                layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
+                                orientation='Axial')
+    else: 
+        cvLogic.viewerPerVolume(volumeNodes=volumeNodes, background=volumeNodes[0], segNodes=segNodes,
+                        layout=[2,2],viewNames=['Ours - SynthSeg-based', 'TotalSegmentatorMRI', 'MRSegmentator', 'MRISegmentator-Abdomen'],
+                        orientation='Axial')
 
     # Display labelmap node 
-    labelNode.GetDisplayNode().SetAllSegmentsOpacity2DFill(0.0)
-    labelNode.GetDisplayNode().SetAllSegmentsOpacity2DOutline(1.0)
-    labelNode.GetDisplayNode().SetSliceIntersectionThickness(3)
+    if (BASE_LABELS):
+        labelNode.GetDisplayNode().SetAllSegmentsOpacity2DFill(0.0)
+        labelNode.GetDisplayNode().SetAllSegmentsOpacity2DOutline(1.0)
+        labelNode.GetDisplayNode().SetSliceIntersectionThickness(3)
 
     # Now link all the slice views 
     # https://slicer.readthedocs.io/en/latest/developer_guide/script_repository.html#set-all-slice-views-linked-by-default 
